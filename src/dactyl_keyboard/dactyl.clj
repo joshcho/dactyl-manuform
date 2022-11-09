@@ -13,10 +13,10 @@
 ;; Shape parameters ;;
 ;;;;;;;;;;;;;;;;;;;;;;
 
-(def nrows 5)
-(def ncols 7)
+(def nrows 6)
+(def ncols 6)
 
-(def α (/ π 12))                        ; curvature of the columns
+(def α (/ π 14))                        ; curvature of the columns
 (def β (/ π 36))                        ; curvature of the rows
 (def centerrow (- nrows 3))             ; controls front-back tilt
 (def centercol 4)                       ; controls left-right tilt / tenting (higher number is more tenting)
@@ -26,7 +26,7 @@
 (def first-15u-row 0)                   ; controls which should be the first row to have 1.5u keys on the outer column
 (def last-15u-row 3)                    ; controls which should be the last row to have 1.5u keys on the outer column
 
-(def extra-row true)                   ; adds an extra bottom row to the outer columns
+(def extra-row false)                   ; adds an extra bottom row to the outer columns
 (def inner-column true)                ; adds an extra inner column (two less rows than nrows)
 (def thumb-style "cf")                ; toggles between "default", "mini", and "cf" thumb cluster
 
@@ -44,14 +44,14 @@
 
 (def thumb-offsets [6 -3 7])
 
-(def keyboard-z-offset 8)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
+(def keyboard-z-offset 11)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
 
 (def extra-width 2.5)                   ; extra space between the base of keys; original= 2
 (def extra-height 1.0)                  ; original= 0.5
 
-(def wall-z-offset -8)                 ; length of the first downward-sloping part of the wall (negative)
+(def wall-z-offset -4)                 ; length of the first downward-sloping part of the wall (negative)
 (def wall-xy-offset 5)                  ; offset in the x and/or y direction for the first downward-sloping part of the wall (negative)
-(def wall-thickness 2)                  ; wall thickness parameter; originally 5
+(def wall-thickness 5)                  ; wall thickness parameter; originally 5
 
 ;; Settings for column-style == :fixed
 ;; The defaults roughly match Maltron settings
@@ -1344,14 +1344,14 @@
     (def screw-offset-tr [-3.5 6.5 0])
     (def screw-offset-br [-3.5 -6.5 0]))
 (when (and (false? pinky-15u) (false? extra-row))
-    (def screw-offset-tr [-4 6.5 0])
-    (def screw-offset-br [-6 13 0]))
-    
-; Offsets for the screw inserts dependent on thumb-style & inner-column
+  (def screw-offset-tr [-4 6.5 0])
+  (def screw-offset-br [-6 13 0]))
+
+                                        ; Offsets for the screw inserts dependent on thumb-style & inner-column
 (when (and (= thumb-style "cf") inner-column)
-    (def screw-offset-bl [9 4 0])
-    (def screw-offset-tm [9.5 -4.5 0])
-    (def screw-offset-bm [13 -7 0]))
+  (def screw-offset-bl [9 4 0])
+  (def screw-offset-tm [9.5 -4.5 0])
+  (def screw-offset-bm [13 -7 0]))
 (when (and (= thumb-style "cf") (false? inner-column))
     (def screw-offset-bl [-7.7 2 0])
     (def screw-offset-tm [9.5 -4.5 0])
